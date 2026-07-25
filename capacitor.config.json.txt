@@ -1,0 +1,15 @@
+{
+  "appId": "com.yourname.goodplanner",
+  "appName": "Good Planner",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon_config_sample",
+      "iconColor": "#4b2f8a",
+      "sound": "alarm.mp3"
+    }
+  }
+}
