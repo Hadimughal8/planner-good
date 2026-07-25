@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Default theme — purple & gold planner palette */
+    /* Default theme â€” purple & gold planner palette */
     --bg-1:#f4f4fa;
     --bg-2:#eeedf7;
     --bg-3:#e8e6f4;
@@ -47,7 +47,7 @@
     --nav-item-active-color: #2d1b5e;
   }
 
-  /* Classic (original) warm theme — toggled on from Settings */
+  /* Classic (original) warm theme â€” toggled on from Settings */
   body.theme-old{
     --bg-1:#ecdccf;
     --bg-2:#e3cec4;
@@ -596,7 +596,7 @@
         <div class="arrow-btn" id="prevDay"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="date-label">
           <div class="date-eyebrow" id="dateEyebrow">Today</div>
-          <div class="date-title" id="dateTitle">—</div>
+          <div class="date-title" id="dateTitle">â€”</div>
         </div>
         <div class="arrow-btn" id="nextDay"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       </div>
@@ -635,7 +635,7 @@
         <div class="theme-row">
           <div class="theme-row-text">
             <div class="theme-row-title">Classic warm theme</div>
-            <div class="theme-row-sub">Off = new purple &amp; gold theme · On = original peach &amp; blue theme</div>
+            <div class="theme-row-sub">Off = new purple &amp; gold theme Â· On = original peach &amp; blue theme</div>
           </div>
           <div class="switch" id="themeSwitch"><div class="knob"></div></div>
         </div>
@@ -676,14 +676,14 @@
 
       <div class="settings-card">
         <div class="settings-label">Data</div>
-        <div class="settings-desc" style="margin-top:0;">Everything you add — tasks, reminders, notes — lives privately on this device only.</div>
+        <div class="settings-desc" style="margin-top:0;">Everything you add â€” tasks, reminders, notes â€” lives privately on this device only.</div>
         <div class="save-row" style="justify-content:flex-start; margin-top:12px;">
           <button class="btn btn-danger" id="clearData">Clear all data</button>
         </div>
       </div>
 
       <div class="settings-card" style="text-align:center; box-shadow:none; background:transparent; border:none;">
-        <div style="font-size:11px; color:var(--text-low); letter-spacing:.5px;">Good Planner · v1.4</div>
+        <div style="font-size:11px; color:var(--text-low); letter-spacing:.5px;">Good Planner Â· v1.4</div>
       </div>
     </section>
   </main>
@@ -819,7 +819,7 @@
 
   // ---------- Native alarm engine (real Android alarm, not a plain notification) ----------
   // "Native" is our own AlarmScheduler plugin (built from native-alarm/alarm/*.java in this
-  // repo) — it hands reminders off to Android's AlarmManager, which fires a full-screen,
+  // repo) â€” it hands reminders off to Android's AlarmManager, which fires a full-screen,
   // looping alarm sound even if the app is closed or the phone is locked, exactly like the
   // phone's own Clock app. "NotifPerm" is only the official @capacitor/local-notifications
   // plugin, used purely to trigger the standard Android 13+ notification permission prompt.
@@ -844,7 +844,7 @@
   }
 
   async function ensureNotifChannel(){
-    if(!NotifPerm) return true; // no permission plugin available — assume fine (older Android)
+    if(!NotifPerm) return true; // no permission plugin available â€” assume fine (older Android)
     try{
       const perm = await NotifPerm.checkPermissions();
       if(perm.display === 'granted') return true;
@@ -861,7 +861,7 @@
     let atDate = new Date(dateObj);
     if(atDate.getTime() <= Date.now()){
       if(isDaily){ atDate = new Date(atDate.getTime() + 86400000); } // first ring tomorrow if today's time already passed
-      else { return; } // one-off reminder in the past — don't schedule
+      else { return; } // one-off reminder in the past â€” don't schedule
     }
     try{
       await Native.schedule({
@@ -960,7 +960,7 @@
     storSet('day:'+dateKey, dayCache[dateKey]);
   }
 
-  // Daily-repeating item templates — one shared list, shown on every day's agenda.
+  // Daily-repeating item templates â€” one shared list, shown on every day's agenda.
   function loadDailyItems(){
     if(dailyCache) return dailyCache;
     dailyCache = storGet('daily') || [];
@@ -1055,7 +1055,7 @@
           <div class="item-body">
             <div class="item-title wrap-text">${escapeHtml(item.title)}</div>
             ${item.desc ? `<div class="item-desc wrap-text">${escapeHtml(item.desc)}</div>` : ''}
-            ${item.type==='reminder' ? `<div class="item-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a5 5 0 00-5 5v3.5c0 .7-.28 1.4-.78 1.9L5 15h14l-1.22-1.6a2.7 2.7 0 01-.78-1.9V8a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.6"/></svg>${item.repeat==='daily'?'Reminder · Every day':'Reminder'}</div>` : (item.repeat==='daily' ? `<div class="item-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0113.66-5.66M20 12a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Every day</div>` : '')}
+            ${item.type==='reminder' ? `<div class="item-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a5 5 0 00-5 5v3.5c0 .7-.28 1.4-.78 1.9L5 15h14l-1.22-1.6a2.7 2.7 0 01-.78-1.9V8a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.6"/></svg>${item.repeat==='daily'?'Reminder Â· Every day':'Reminder'}</div>` : (item.repeat==='daily' ? `<div class="item-tag"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 0113.66-5.66M20 12a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Every day</div>` : '')}
           </div>
           <div class="del-btn" data-id="${item.id}" data-daily="${dailyAttr}"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         </div>`;
@@ -1215,7 +1215,7 @@
     const dayKey = fmtKey(currentDate);
 
     if(editingItemId){
-      // Remove from wherever it currently lives — its repeat setting may have changed.
+      // Remove from wherever it currently lives â€” its repeat setting may have changed.
       if(editingIsDaily){
         saveDailyItems(loadDailyItems().filter(x=>x.id!==editingItemId));
       } else {
@@ -1304,7 +1304,7 @@
       steps.push({
         icon: OB_ICONS.alarm,
         title: 'Ring exactly on time',
-        desc: 'Grant alarm permission so reminders ring at the precise moment you set — not late, never skipped.',
+        desc: 'Grant alarm permission so reminders ring at the precise moment you set â€” not late, never skipped.',
         action: 'Allow alarms', skip: true,
         handler: async ()=>{
           try{
@@ -1433,7 +1433,7 @@
     $('#themeSwitch').classList.toggle('on', isOld);
   }
   function initTheme(){
-    const saved = storGet('theme'); // 'old' or 'new' — default is new
+    const saved = storGet('theme'); // 'old' or 'new' â€” default is new
     const isOld = saved === 'old';
     applyTheme(isOld);
   }
@@ -1492,7 +1492,7 @@
       if(!granted){ showToast('Permission not granted'); return; }
       try{
         await Native.schedule({ id: 999999, atMillis: Date.now()+5000, title:'Test alarm', body:'This is what your reminders will sound like', repeatDaily:false });
-        showToast('Test alarm in 5 seconds — try locking your phone');
+        showToast('Test alarm in 5 seconds â€” try locking your phone');
       }catch(e){ showToast('Could not schedule test alarm'); }
     } else {
       fireReminderAlert({title:'Test alarm', desc:'This is what your reminders will sound like'});
@@ -1518,7 +1518,7 @@
   });
 
   // ---------- browser-fallback reminder alarm engine ----------
-  // Only used when NOT running as the native app (Native is null) — e.g. testing
+  // Only used when NOT running as the native app (Native is null) â€” e.g. testing
   // this page directly in a mobile/desktop browser. Only works while the tab
   // stays open, since no web page can wake a locked phone or closed app.
   let sharedAudioCtx = null;
@@ -1599,7 +1599,7 @@
       }
     }
 
-    // daily-repeating items — tracked per-day via a lightweight alerted map
+    // daily-repeating items â€” tracked per-day via a lightweight alerted map
     const daily = loadDailyItems();
     if(daily.length){
       const d = loadDay(todayKey);
